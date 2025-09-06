@@ -1,0 +1,124 @@
+/* Definimos los colores oficiales de la bandera */
+:root {
+    --azul-ultramar: #002D62;
+    --rojo-bermellon: #CE1126;
+    --blanco: #FFFFFF;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    /* Propiedades para el fondo de día */
+    background-image: url('https://images.unsplash.com/photo-1518090710609-b4b0e8b1d9c0?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    
+    margin: 0;
+    font-family: 'Inter', sans-serif;
+    overflow: hidden;
+}
+
+/* Contenedor para el asta y la bandera */
+.flag-assembly {
+    display: flex;
+    align-items: flex-start;
+    perspective: 1000px;
+    position: relative;
+    z-index: 1;
+}
+
+/* Estilos para el asta de la bandera */
+.flagpole {
+    width: 25px;
+    height: 450px;
+    background: linear-gradient(to right, #e0e0e0, #a0a0a0);
+    border: 1px solid #666;
+    border-radius: 4px 4px 0 0;
+    position: relative;
+    box-shadow: inset -3px 0px 5px rgba(0,0,0,0.2);
+}
+
+/* Estilos para el tope dorado del asta */
+.finial {
+    width: 40px;
+    height: 40px;
+    background: radial-gradient(circle at 12px 12px, #fff2a8, #ffd700);
+    border-radius: 50%;
+    position: absolute;
+    top: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+    border: 1px solid #b8860b;
+}
+
+/* Contenedor principal de la bandera con sombra para resaltar */
+.flag-container {
+    width: 480px;
+    max-width: 80vw;
+    aspect-ratio: 8 / 5;
+    display: grid;
+    grid-template-columns: 1fr 0.2fr 1fr;
+    grid-template-rows: 1fr 0.2fr 1fr;
+    box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.3);
+    border: 1px solid #ccc;
+    transform-style: preserve-3d;
+    animation: wave 8s ease-in-out infinite;
+    transform-origin: left center;
+}
+
+/* Keyframes para la animación de ondeado de la bandera completa */
+@keyframes wave {
+    0% { transform: rotateY(0deg) translateX(0px); }
+    25% { transform: rotateY(15deg) translateX(10px); }
+    50% { transform: rotateY(0deg) translateX(0px); }
+    75% { transform: rotateY(-15deg) translateX(-10px); }
+    100% { transform: rotateY(0deg) translateX(0px); }
+}
+
+/* Ajustes para los cuadrantes y la cruz para que también se muevan */
+.quadrant, .cross {
+    transform-style: preserve-3d;
+}
+
+/* Estilos para los cuadrantes */
+.quadrant {
+    width: 100%;
+    height: 100%;
+}
+
+.blue { background-color: var(--azul-ultramar); }
+.red { background-color: var(--rojo-bermellon); }
+
+/* Posicionamiento de los cuadrantes en la grilla */
+.top-left { grid-column: 1; grid-row: 1; }
+.top-right { grid-column: 3; grid-row: 1; }
+.bottom-left { grid-column: 1; grid-row: 3; }
+.bottom-right { grid-column: 3; grid-row: 3; }
+
+/* Creación de la cruz blanca */
+.cross {
+    background-color: var(--blanco);
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Posicionamiento de las partes de la cruz */
+.cross-vertical { grid-column: 2; grid-row: 1 / 4; }
+.cross-horizontal { grid-column: 1 / 4; grid-row: 2; }
+
+/* Contenedor del escudo */
+.coat-of-arms {
+    position: absolute;
+    width: 95%;
+    height: 95%;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
